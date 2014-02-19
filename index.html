@@ -28,21 +28,21 @@
             </div>
         </div>
 
-        <nav class="spanner">
+        <nav class="spanner" slide-header>
             <div class="container">
                 <div class="row row-top">
-                    <div class="col-md-1">
+                    <div class="col-md-1 col-xs-2">
                         <a href="http://gulpjs.com/">
                             <img class="gulp-logo center-block"
                                  src="https://raw.github.com/gulpjs/artwork/master/gulp.png" alt="gulp artwork"/>
                         </a>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 hidden-sm hidden-xs">
                         <h1>gulp plugins</h1>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-5 col-xs-8">
                         <div class="search-bar input-group-lg">
-                            <input ng-change="limit=15" type="text" class="form-control plugin-search"
+                            <input ng-change="limit=15" type="text" class="ng-cloak form-control plugin-search"
                                    placeholder="search {{ data.length }} plugins" ng-model="search">
                         </div>
                     </div>
@@ -50,7 +50,7 @@
             </div>
         </nav>
 
-        <section class="container plugin-info">
+        <section class="container plugin-info ng-cloak">
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="pull-right"><em><span class="count text-muted" ng-bind-template="{{(data | filter:search).length}} plugins"></span></em></h4>
@@ -58,12 +58,17 @@
             </div>
         </section>
 
-        <section class="container plugin-list" ng-init="limit=15" infinite-scroll="limit=limit+25">
-            <div class="row plugin" ng-repeat="plugin in data | filter:search | limitTo:limit track by $index">
+        <section class="container plugin-list ng-cloak" ng-init="limit=15" infinite-scroll="limit=limit+25">
+            <div class="row plugin" ng-repeat="plugin in data | filter:search | limitTo:limit track by $index"
+                 showhover=".flag-icon">
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <h3>
                         <a ng-href="https://npmjs.org/package/{{plugin.name}}/" ng-bind="plugin.name"></a>
                         <small ng-bind="plugin.version"></small>
+                        <a target="_blank"
+                           ng-href="https://github.com/gulpjs/plugins/issues/new?title=Remove plugin {{plugin.name}} from the blacklist&body=Reason&labels=remove from blacklist">
+                            <span class="label label-danger blacklist" ng-bind="blackList[plugin.name]" tooltip="Mistake? Open an issue here"></span>
+                        </a>
                     </h3>
                     <div>
                         <p class="description" ng-bind="plugin.description"></p>
@@ -74,6 +79,12 @@
                         <small>
                             <a ng-href="{{plugin.homepage}}" ng-bind-template="{{plugin.author}} / {{plugin.name}}"></a>
                         </small>
+                        <a class="pull-right flag-icon"
+                           target="_blank"
+                           ng-href="https://github.com/gulpjs/plugins/issues/new?title=Add plugin {{plugin.name}} to the blacklist&body=Reason&labels=add to blacklist"
+                           tooltip-placement="left" tooltip="Add this plugin to blacklist">
+                            <i class="glyphicon glyphicon-flag"></i>
+                        </a>
                     </h3>
                     <p class="description">
                         <a ng-repeat="keyword in plugin.keywords | orderBy:orderByGulpKeywords track by $index"
