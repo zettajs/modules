@@ -1,1 +1,111 @@
-"use strict";angular.module("npm-plugin-browser",["infinite-scroll","ngProgress","slide-header"]),angular.module("npm-plugin-browser").controller("PluginListCtrl",["$scope","$http","$location","$q","ngProgress",function(t,r,n,e,i){var a=["name","keywords","rating","description","author","modified","homepage","version"],o=15,s=function(t){return a.forEach(function(r){"keywords"!==r&&Array.isArray(t.fields[r])&&(t.fields[r]=t.fields[r][0])}),t.fields},u=function(t){var r={results:t.hits.hits.map(s),total:t.hits.total};return r},l=function(t,n){return r.get("http://registry.gulpjs.com/_search",{params:{q:"keywords:gulpplugin,gulpfriendly",fields:a.join(","),start:t,size:n},transformResponse:r.defaults.transformResponse.concat([u])})},c=function(){var t=arguments;return function(r,n){for(var e,i,a=0,o=t.length;o>a;a++){if(e=t[a](r),i=t[a](n),i>e)return-1;if(e>i)return 1}return 0}},f=function(r){return r.sort(c(function(r){return t.blackList[r.name]?1:0},function(t){return-t.rating},function(t){return t.name}))};i.start(),e.all([r.get("blackList.json"),l(0,o)]).then(function(r){return t.blackList=r[0].data,t.data=f(r[1].data.results),l(o,r[1].data.total)}).then(function(r){t.data=f(t.data.concat(r.data.results)),angular.isString(n.search().q)&&(t.search=n.search().q),i.complete()}),t.orderByGulpKeywords=function(t){return"gulpplugin"===t||"gulpfriendly"===t?-1:0}}]),angular.module("npm-plugin-browser").directive("tooltip",function(){return{link:function(t,r,n){var e=n.tooltipPlacement||"right";r.attr("title",n.tooltip).tooltip({placement:e})}}});
+'use strict';
+
+angular.module('npm-plugin-browser', ['infinite-scroll','ngProgress', 'slide-header']);
+
+'use strict';
+
+angular.module('npm-plugin-browser')
+  .controller('PluginListCtrl', function ($scope, $http, $location, $q, ngProgress) {
+
+    var fields = ['name','keywords','rating','description','author','modified','homepage','version'];
+
+    var initialFetchSize = 15;
+
+    var formatResult = function(data){
+      fields.forEach(function(k){
+        if (k === 'keywords') return;
+        if (!Array.isArray(data.fields[k])) return;
+        data.fields[k] = data.fields[k][0];
+      });
+      return data.fields;
+    };
+
+    var formatData = function(data){
+      var out = {
+        results: data.hits.hits.map(formatResult),
+        total: data.hits.total
+      };
+      return out;
+    };
+
+    var makeRequest = function (start, size) {
+      return $http.get('http://registry.gulpjs.com/_search', {
+        params: {
+          q: 'keywords:gulpplugin,gulpfriendly',
+          fields: fields.join(','),
+          start: start,
+          size: size
+        },
+        transformResponse: $http.defaults.transformResponse.concat([formatData])
+      });
+    };
+
+    var sortBy = function () {
+      var args = arguments;
+
+      return function (a, b) {
+        var scoreA, scoreB;
+
+        for (var i = 0, len = args.length; i < len; i++) {
+          scoreA = args[i](a);
+          scoreB = args[i](b);
+          if (scoreA < scoreB) {
+            return -1;
+          } else if (scoreA > scoreB) {
+            return 1;
+          }
+        }
+
+        return 0;
+      };
+    };
+
+    var sortResults = function (results) {
+      return results.sort(sortBy(
+        // Sort blackList plugins to bottom
+        function (plugin) {
+          return $scope.blackList[plugin.name] ? 1 : 0;
+        },
+        // Sort highly-rated plugins to top
+        function (plugin) {
+          return -plugin.rating;
+        },
+        // Fall back to sort by name
+        function (plugin) {
+          return plugin.name;
+        }
+      ));
+    };
+
+    ngProgress.start();
+    $q.all([$http.get('blackList.json'), makeRequest(0, initialFetchSize)])
+      .then(function (responses) {
+        $scope.blackList = responses[0].data;
+        $scope.data = sortResults(responses[1].data.results);
+        return makeRequest(initialFetchSize, responses[1].data.total);
+      })
+      .then(function (response) {
+        $scope.data = sortResults($scope.data.concat(response.data.results));
+        if (angular.isString(($location.search()).q)) {
+          $scope.search = ($location.search()).q;
+        }
+        ngProgress.complete();
+      });
+
+    $scope.orderByGulpKeywords = function (item) {
+      return (item === 'gulpplugin' || item === 'gulpfriendly') ? -1 : 0;
+    };
+  });
+'use strict';
+
+angular.module('npm-plugin-browser')
+  .directive('tooltip', function () {
+    return {
+      link: function (scope, element, attrs) {
+        var placement = attrs.tooltipPlacement || 'right';
+        element
+          .attr('title', attrs.tooltip)
+          .tooltip({placement: placement});
+      }
+    }
+  });
