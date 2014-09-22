@@ -1,4 +1,5 @@
 {
+  "gulp-blink": "use the `blink` module directly",
   "gulp-clean": "use the `del` module",
   "gulp-rimraf": "use the `del` module",
   "gulp-browserify": "use the browserify module directly",
@@ -234,5 +235,6 @@
   "gulp-wrapper": "duplicate of gulp-wrap",
   "gulp-ziey-ruby-haml": "duplicate of gulp-ruby-haml",
   "gulp.bless": "duplicate of gulp-bless",
-  "gulp-sprite-generator": "duplicate of gulp.spritesmith"
+  "gulp-sprite-generator": "duplicate of gulp.spritesmith",
+  "gulp-jsx": "duplicate of gulp-react"
 }
