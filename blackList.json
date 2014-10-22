@@ -1,5 +1,5 @@
 {
-  "gulp-blink": "use the `blink` module directly",
+  "gulp-blink": "deprecated. use `blink` instead.",
   "gulp-clean": "use the `del` module",
   "gulp-rimraf": "use the `del` module",
   "gulp-browserify": "use the browserify module directly",
@@ -108,9 +108,10 @@
   "gulp-jsbeautifier": "duplicate of gulp-beautify",
   "gulp-additem": "duplicate of gulp-add",
   "gulp-angular-templatecache-n3utrino": "duplicate of gulp-angular-templatecache",
-  "gulp-bower-src": "duplicateof gulp-bower-files",
+  "gulp-bower-files": "use bower module directly and globs",
+  "gulp-bower-src": "use bower module directly and globs",
   "gulp-concat-sourcemap-bom": "moot as gulp strips bom. duplicate of gulp-concat-sourcemap",
-  "gulp-concat-vendor": "does too much. use gulp-bower-files and gulp-concat instead.",
+  "gulp-concat-vendor": "does too much. use gulp-concat instead.",
   "gulp-cson-safe": "duplicate of gulp-cson",
   "gulp-dot-precompiler": "duplicate of gulp-dotify",
   "gulp-dot": "duplicate of gulp-dotify",
@@ -191,7 +192,7 @@
   "gulp-concat-coffee": "unpublished by author",
   "gulp-compass": "not a gulp plugin",
   "gulp-concat-sourcemap": "gulp-concat supports source maps",
-  "gulp-css-base64": "duplicate of gulp-base64",
+  "gulp-base64": "duplicate of gulp-css-base64",
   "gulp-download-atom-shell": "not a gulp plugin",
   "gulp-dummy-json": "not a gulp plugin",
   "gulp-dust-html": "duplicate of gulp-dust-render",
@@ -236,5 +237,7 @@
   "gulp-ziey-ruby-haml": "duplicate of gulp-ruby-haml",
   "gulp.bless": "duplicate of gulp-bless",
   "gulp-sprite-generator": "duplicate of gulp.spritesmith",
-  "gulp-jsx": "duplicate of gulp-react"
+  "gulp-jsx": "duplicate of gulp-react",
+  "gulp-unpathify": "use the `unpathify` module directly",
+  "gulp-filter-by": "duplicate of gulp-filter"
 }
