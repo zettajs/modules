@@ -1,10 +1,13 @@
 {
+  "gulp-angular-templatecache-ionic": "duplicate of gulp-angular-templatecache",
+  "mmjd-gulp-este": "duplicate of gulp-este",
   "gulp-blink": "deprecated. use `blink` instead.",
   "gulp-clean": "use the `del` module",
   "gulp-rimraf": "use the `del` module",
   "gulp-browserify": "use the browserify module directly",
   "gulp-requirejs": "use the require.js module directly",
   "gulp-myth-css": "duplicate of gulp-myth",
+  "gulp-htmin": "duplicate of gulp-htmlmin",
   "gulp-filesize": "duplicate of gulp-size",
   "gulp-redust": "duplicate of gulp-dust",
   "gulp-shell": "duplicate of gulp-exec",
@@ -55,6 +58,7 @@
   "gulp-pancakes": "does nothing",
   "gulp-batch-replace": "duplicate of gulp-replace",
   "gulp-mversion": "duplicate of gulp-bump",
+  "gulp-minify-inline-scripts": "duplicate of gulp-uglify-inline",
   "gulp-jshint-cached": "duplicate of gulp-jshint",
   "gulp-twitter": "not a gulp plugin",
   "gulp-print": "duplicate of gulp-debug",
@@ -133,7 +137,7 @@
   "gulp-istanbul-enforcer": "duplicate of gulp-istanbul",
   "gulp-less-sourcemap": "duplicate of gulp-less",
   "gulp-load-tasks": "duplicate of gulp-load-plugins",
-  "gulp-load-utils": "duplicate of gulp-utils",
+  "gulp-load-utils": "duplicate of gulp-util",
   "gulp-mocha-co": "duplicate of gulp-mocha",
   "gulp-modified": "duplicate of gulp-changed",
   "gulp-modify": "duplicate of gulp-tap",
@@ -239,5 +243,7 @@
   "gulp-sprite-generator": "duplicate of gulp.spritesmith",
   "gulp-jsx": "duplicate of gulp-react",
   "gulp-unpathify": "use the `unpathify` module directly",
-  "gulp-filter-by": "duplicate of gulp-filter"
+  "gulp-filter-by": "duplicate of gulp-filter",
+  "gulp-inline-source": "duplicate of gulp-smoosher",
+  "grunt-favicons-tasks": "use the `favicons` module directly"
 }
