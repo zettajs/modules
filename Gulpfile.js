@@ -58,5 +58,5 @@ gulp.task('assets', ['clean'], function () {
 // Deploy
 gulp.task('deploy', ['default'], function () {
   return gulp.src('dist/**/*')
-    .pipe(deploy('git@github.com:zettajs/zetta-module-search.git'));
+    .pipe(deploy('git@github.com:zettajs/modules.git'));
 });
