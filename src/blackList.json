@@ -5,6 +5,7 @@
   "zetta-auto-scout": "main auto scout module",
   "zetta-scout": "main scout module",
   "zetta-rels": "main dependency",
+  "zetta-streams": "main dependency",
   "zetta-scientist": "main dependency",
   "edison-cli": "somewhat unrelated",
   "si-prefix": "unrelated",
