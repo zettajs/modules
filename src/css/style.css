@@ -38,7 +38,7 @@ html, body {
 .logo {
     position: absolute;
     left: 20px;
-    top: 10px;
+    padding-top: 7px;
 }
 
 .plugin-search {
