@@ -38,10 +38,7 @@ html, body {
 .logo {
     position: absolute;
     left: 20px;
-    text-decoration: none;
-    color: inherit;
-    font-family: 'Grand Hotel', cursive;
-    font-size: 28px;
+    top: 10px;
 }
 
 .plugin-search {
