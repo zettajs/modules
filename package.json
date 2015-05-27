@@ -1,7 +1,7 @@
 {
-  "name": "gulp-plugins",
+  "name": "zetta-modules",
   "version": "0.0.0",
-  "homepage": "gulp-plugins",
+  "homepage": "zetta-modules",
   "license": "MIT",
   "private": true,
   "scripts": {
