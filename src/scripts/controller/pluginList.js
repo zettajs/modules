@@ -27,7 +27,7 @@ angular.module('npm-plugin-browser')
     var makeRequest = function (start, size) {
       return $http.get('http://npmsearch.com/query', {
         params: {
-          q: ['keywords:zetta'],
+          q: ['keywords:zetta keywords:Zetta'],
           fields: fields.join(','),
           start: start,
           size: size,
