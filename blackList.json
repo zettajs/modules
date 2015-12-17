@@ -9,6 +9,7 @@
   "zetta-scientist": "main dependency",
   "edison-cli": "somewhat unrelated",
   "si-prefix": "unrelated",
+  "format-si-prefix": "unrelated",
   "zetta-rpc": "unrelated",
   "zetta-login": "unrelated",
   "zetta-i18n": "unrelated",
