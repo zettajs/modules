@@ -7,6 +7,7 @@
   "zetta-rels": "main dependency",
   "zetta-streams": "main dependency",
   "zetta-scientist": "main dependency",
+  "zetta-http-device": "main dependency",
   "zetta-events-stream-protocol": "main dependency",
   "edison-cli": "somewhat unrelated",
   "si-prefix": "unrelated",
